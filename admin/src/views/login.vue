@@ -28,14 +28,14 @@
                       <fieldset>
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control" placeholder="Username"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                         </label>
 
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control" placeholder="Password"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
                         </label>
@@ -44,7 +44,7 @@
 
                         <div class="clearfix">
                           <label class="inline">
-                            <input type="checkbox" class="ace" />
+                            <input type="checkbox" class="ace"/>
                             <span class="lbl">记住我</span>
                           </label>
 
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-  $('body').attr('class', 'login-layout light-login');
+$('body').attr('class', 'login-layout light-login');
 
 export default {
   name: 'App',

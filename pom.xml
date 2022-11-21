@@ -52,6 +52,12 @@
 				<artifactId>server</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			<!-- mybatis分页插件pagehelper -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>1.4.2</version>
+			</dependency>
 			<!--mybatis-generator-core反向生成java代码-->
 			<dependency>
 				<groupId>org.mybatis.generator</groupId>
@@ -66,6 +72,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.0</version>
 			</plugin>
 
 			<!-- mybatis generator 自动生成代码插件 -->

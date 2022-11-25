@@ -58,6 +58,11 @@
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
 				<version>1.4.2</version>
 			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+			<version>1.2.60</version>
+			</dependency>
 			<!--mybatis-generator-core反向生成java代码-->
 			<dependency>
 				<groupId>org.mybatis.generator</groupId>

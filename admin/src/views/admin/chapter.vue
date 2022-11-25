@@ -93,6 +93,9 @@ export default {
     }
   },
   methods: {
+    /**
+    * 点击【新增】
+    */
     add(){
       let _this = this;
       _this.chapter = {};
@@ -100,13 +103,18 @@ export default {
 
     },
 
+    /**
+    * 点击【编辑】
+    */
     edit(chapter){
       let _this = this;
       _this.chapter = $.extend({}, chapter);  //chapter复制到空对象（jquery方法extend）
       $("#form-modal").modal("show")
-
     },
 
+    /**
+    * 列表查询
+    */
     list(page){
       let _this = this;
       Loading.show();
@@ -115,13 +123,15 @@ export default {
         size: _this.$refs.pagination.size
       }).then((response)=>{
         Loading.hide();
-        console.log("查询大章列表结果",response);
         let resp = response.data;
         _this.chapters = resp.content.list;
         _this.$refs.pagination.render(page, resp.content.total);
       })
     },
 
+    /**
+    * 点击【保存】
+    */
     save(){
       let _this = this;
       // 保存校验
@@ -146,6 +156,9 @@ export default {
       })
     },
 
+    /**
+    * 点击【删除】
+    */
     del(id) {
       let _this = this;
       Confirm.show("删除大章后不可恢复，确认删除?", function() {

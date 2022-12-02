@@ -22,6 +22,8 @@ values ('00000001', '测试课程01', '这是一门测试课程', 7200, 19.9, ''
 
 alter table `course` add column (`teacher_id` char(8) comment '讲师|teacher.id');
 
+update course c set `time`=(select sum(`time`) from section where course_id='00000001') where c.id='00000001';
+
 -- 大章
 drop table if exists `chapter`;
 create table `chapter` (
@@ -66,6 +68,8 @@ alter table `section` add column (`vod` char(32) comment 'vod|阿里云vod');
 
 insert into `section` (id, title, course_id, chapter_id, video, time, charge, sort, created_at, updated_at)
 values ('00000001', '测试小节01', '00000001', '00000000', '', 500, 'f', 1, now(), now());
+
+
 
 -- 分类
 drop table if exists `category`;

@@ -11,6 +11,7 @@ import com.course.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -69,7 +70,12 @@ public class CourseCategoryService {
         courseCategoryMapper.deleteByPrimaryKey(id);
     }
 
-    // 还可以采用自定义mapper写动态sql，将list传入mybatis，批量插入一条数据；
+    /**
+     * 根据某一课程，先清空课程分类，再保存课程分类
+     * @param dtoList
+     * 还可以采用自定义mapper写动态sql，将list传入mybatis，批量插入一条数据；
+     */
+    @Transactional
     public void saveBatch(String courseId, List<CategoryDto> daoList){
         CourseCategoryExample courseCategoryExample = new CourseCategoryExample();
         courseCategoryExample.createCriteria().andCourseIdEqualTo(courseId);
@@ -82,5 +88,16 @@ public class CourseCategoryService {
             courseCategory.setCategoryId(categoryDto.getId());
             insert(courseCategory);
         }
+    }
+
+    /**
+     * 查找课程下所有分类
+     * @param courseId
+     */
+    public List<CourseCategoryDto> listByCourse(String courseId){
+        CourseCategoryExample courseCategoryExample = new CourseCategoryExample();
+        courseCategoryExample.createCriteria().andCourseIdEqualTo(courseId);
+        List<CourseCategory> courseCategoryList = courseCategoryMapper.selectByExample(courseCategoryExample);
+        return CopyUtil.copyList(courseCategoryList,CourseCategoryDto.class);
     }
 }

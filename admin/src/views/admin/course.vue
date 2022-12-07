@@ -32,6 +32,16 @@
             <h3 class="search-title">
               <a href="#" class="blue">{{course.name}}</a>
             </h3>
+
+            <div v-for="teacher in teachers.filter(t=>{return t.id===course.teacherId})" class="profile-activity clearfix">
+              <div>
+                <img v-show="!teacher.image" class="pull-left" src="/ace/assets/images/avatars/avatar5.png">
+                <img v-show="teacher.image" class="pull-left" v-bind:src="teacher.image">
+                <a class="user" href="#"> {{teacher.name}} </a>
+                <br>
+                {{teacher.position}}
+              </div>
+            </div>
             <p>
               <span class="blue bolder bigger-150">{{course.price}}
                 &nbsp;
@@ -42,7 +52,7 @@
             <p>
               <span class="badge badge-info">{{course.id}}</span>
               &nbsp;
-              <span class="badge badge-info">{{course.sort}}</span>
+              <span class="badge badge-info">排序：{{course.sort}}</span>
               &nbsp;
               <span class="badge badge-info">{{course.time | formatSecond}}</span>
             </p>
@@ -537,7 +547,12 @@
 </script>
 
 <style scoped>
-.caption h3 {
-  font-size: 20px;
-}
+  .caption h3 {
+    font-size: 20px;
+  }
+  @media (max-width: 1199px) {
+    .caption h3 {
+      font-size: 16px;
+    }
+  }
 </style>
